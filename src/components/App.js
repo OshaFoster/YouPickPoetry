@@ -3,6 +3,7 @@ import Header from "./Header";
 import { words } from "../global"
 import Word from "./Word"
 import Poem from "./Poem"
+import PoemLine from "./PoemLine"
 import glamorous from "glamorous";
 
 const WordsDiv = glamorous.div({
@@ -21,6 +22,15 @@ const RefreshButton = glamorous.button ({
     margin: " 20px auto",
     // background: "#6ABBB1",
 })
+const AddToPoem = glamorous.button ({
+
+    color: "#fdfdfd",
+    background: "#6ABBB1",
+    fontSize: "14px",
+    borderColor: "#898985",
+    display: "block",
+    margin: " 20px auto",
+})
 
 class App extends React.Component {
         state = {
@@ -38,7 +48,7 @@ class App extends React.Component {
     randomItems(words){
 
         let newArray = []
-        for (let i = 0; i < 100; i ++){
+        for (let i = 0; i < 110; i ++){
             const word = words[Math.floor(Math.random()*words.length)]
                 newArray.push(word)
         }
@@ -61,12 +71,25 @@ class App extends React.Component {
     };
 
     lineToPoem = (event) => {
-
-        const line = []
-        this.state.poem;
-
+        // create a poem line component
+        //push poem to finalPoem
+        //set state of poem to empty string
+        const finalPoem = this.state.finalPoem
+        finalPoem.push(this.state.poem)
+        this.setState({
+            poem: " ",
+            finalPoem
+        })
     }
-
+    mapPoem(){
+        return this.state.finalPoem.map((line, i) =>{
+            return (
+                <PoemLine line={line}
+                        key={line + i}
+                    />
+            )
+        })
+    }
 
     mapWord(){
         return this.state.words.map((word, i) => {
@@ -96,12 +119,13 @@ class App extends React.Component {
         return(
             <div>
                 <Header/>
-
+            {this.mapPoem()}
                 <WordsDiv>
                     <PoemContainer>
                         <Poem poem={this.state.poem}
                             />
                     </PoemContainer>
+                    <AddToPoem onClick={this.lineToPoem}>Add to Poem</AddToPoem>
                     {this.mapWord()}
                     <RefreshButton onClick={()=> this.randomItems(words)}>Refresh</RefreshButton>
                 </WordsDiv>
