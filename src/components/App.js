@@ -7,10 +7,10 @@ import PoemLine from "./PoemLine"
 import glamorous from "glamorous";
 
 const WordsDiv = glamorous.div({
-    width: "80%",
+    width: "70%",
     height: "400px",
     backgroundColor: "#fdfdfd",
-    margin: "auto"
+    margin: "auto",
 })
 
 const RefreshButton = glamorous.button ({
@@ -20,16 +20,32 @@ const RefreshButton = glamorous.button ({
     borderColor: "#898985",
     display: "block",
     margin: " 20px auto",
+    border: "none",
+
     // background: "#6ABBB1",
 })
 const AddToPoem = glamorous.button ({
 
     color: "#fdfdfd",
     background: "#6ABBB1",
-    fontSize: "14px",
+    fontSize: "16px",
     borderColor: "#898985",
-    display: "block",
+    display: "inlineblock",
+    margin: "auto",
+    border: "none",
+
+})
+
+const DeleteLine = glamorous.button ({
+
+    color: "#fdfdfd",
+    background: "#6ABBB1",
+    fontSize: "16px",
+    borderColor: "#898985",
+    display: "inlineblock",
     margin: " 20px auto",
+    border: "none",
+
 })
 
 class App extends React.Component {
@@ -48,7 +64,7 @@ class App extends React.Component {
     randomItems(words){
 
         let newArray = []
-        for (let i = 0; i < 110; i ++){
+        for (let i = 0; i < 155; i ++){
             const word = words[Math.floor(Math.random()*words.length)]
                 newArray.push(word)
         }
@@ -91,6 +107,13 @@ class App extends React.Component {
         })
     }
 
+    DeleteLine = () => {
+        const poem = ""
+        this.setState({
+            poem
+        })
+   };
+
     mapWord(){
         return this.state.words.map((word, i) => {
             return (
@@ -105,13 +128,13 @@ class App extends React.Component {
     render(){
         const PoemContainer = glamorous.div({
             margin: "55px auto 0 auto",
-            width: "80%",
+            width: "65%",
+            height: "40px",
             padding: "0px 15px 0px 15px",
             display: "flex",
             justifyContent: "center",
             color: "#676767",
-            fontFamily:"'Amatic SC'",
-            fontSize: "28px"
+            fontSize: "20px"
         });
 
 
@@ -125,8 +148,9 @@ class App extends React.Component {
                         <Poem poem={this.state.poem}
                             />
                     </PoemContainer>
-                    <AddToPoem onClick={this.lineToPoem}>Add to Poem</AddToPoem>
-                    {this.mapWord()}
+                    <DeleteLine onClick={this.DeleteLine}>Delete Line</DeleteLine>
+                <AddToPoem onClick={this.lineToPoem}>Add to Poem</AddToPoem>
+                <div> {this.mapWord()} </div>
                     <RefreshButton onClick={()=> this.randomItems(words)}>Refresh</RefreshButton>
                 </WordsDiv>
 
