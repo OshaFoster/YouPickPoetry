@@ -40,6 +40,7 @@ function Header(){
         backgroundSize: "cover",
         display: "flex",
         justifySelf: "center",
+        zIndex: "10",
     });
 
 

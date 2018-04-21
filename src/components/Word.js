@@ -21,7 +21,7 @@ export default class Word extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if (nextProps.poem !== this.props.poem) {
+        if (nextProps.poemLine !== this.props.poemLine) {
             return false;
         }
         return true;

@@ -8,10 +8,8 @@ export const words =[ "shoe", "pace", "shine", "knuckle", "home","mystery", "mer
  "anyone", "lucky", "point", "under", "smoke", "people", "sugar", "sun", "sand", "messy",
 "fish", "wash", "ship", "polish", "absurd", "air", "appear", "apple", "barren", "bright", "boom",
 "brick", "bored", "bliss", "booty", "border", "boss", "bizarre", "bounce", "blank",
-"blend", "bread", "bye", "breach", "bravado", "brawl", "brat", "cage", "chew", "comfortable", "child",
+"blend", "bread", "bye", "breach", "brave", "brawl", "brat", "cage", "chew", "comfortable", "child",
 "calm", "chip", "chord", "composed", "captive", "careless", "laugh", "light", "luck", "creative", "confident",
-"clay", "confuse", "climb", "connect","ly", "s", "ed","her", "me", "I", "himself", "herself", "and","s", "was",
-"is", "has", "it", "them", "then", "this", "in", "while", "when", "were", "where"];
-
-
-export const wordEnds = [ "ly", "s", "ed","her", "me", "I", "himself", "herself", "and"]
+"clay", "confused", "climb", "connect","ly", "s", "ed","her", "me", "I", "himself", "herself", "and","s", "was",
+"is", "has", "it", "them", "then", "this", "in", "while", "when", "were", "where", "blanket", "learn",
+"under", "over", "around", "before", "begin", "on", "after", "up", "down", "by"];

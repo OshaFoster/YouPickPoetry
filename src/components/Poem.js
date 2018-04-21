@@ -6,7 +6,7 @@ export default function Poem(props){
 
     return (
         <div>
-        <p>{props.poem}</p>
+        <p>{props.poemLine}</p>
         </div>
 
     )
