@@ -24,7 +24,7 @@ const FinalPoemDiv = glamorous.div({
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "#fdfdfd",
-    color: "#676767",
+    color: "#522053",
     borderLeft: "1px solid #ebbe46",
     marginTop: "60px",
     paddingTop:"30px",
@@ -45,9 +45,6 @@ const PoemContainer = glamorous.div({
 
 });
 
-const InputDiv =glamorous.form({
-//
-})
 
 const RefreshButton = glamorous.button({
     color: "#fdfdfd",
@@ -57,6 +54,7 @@ const RefreshButton = glamorous.button({
     display: "block",
     margin: " 20px auto",
     border: "none",
+    outline: "none",
     fontFamily: "'PT Sans Narrow'",
     ':hover,:active,:focus': {
    background: "linear-gradient(-90deg, rgba(193,125,127,1), rgb(235,190,70))",
@@ -77,13 +75,11 @@ class App extends React.Component {
     }
 
     randomItems(words) {
-
         let newArray = []
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 75; i++) {
             const word = words[Math.floor(Math.random() * words.length)]
             newArray.push(word)
         }
-
         this.setState({words: newArray})
     }
 

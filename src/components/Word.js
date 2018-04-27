@@ -37,8 +37,10 @@ export default class Word extends React.Component {
             color: "#fdfdfd",
             background: "#676767",
             borderColor: "#898985",
+            fontSize: "14px",
             transform: `rotate(${skew}deg)`,
             margin: `${this.randomMargin()}px ${this.randomMargin()}px ${this.randomMargin()}px ${this.randomMargin()}px`,
+            outline: "none",
         });
         return (
             <Button onClick={this.props.addFoo}>{this.props.word}</Button>

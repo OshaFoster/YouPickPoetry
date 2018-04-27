@@ -16,10 +16,13 @@ const ButtonWrapper = glamorous.div({display: "flex",
     width: "100vw",
     alignItems: "center",
     justifyContent: "space-around",
-    margin: "20px auto"})
+
+
+
+})
 
 const PoemButton = glamorous.button({
-    color: "#fdfdfd",
+    color: "#676767",
     // background: "#6ABBB1",
     backgroundColor: "transparent",
     fontFamily: "'PT Sans Narrow'",
@@ -27,9 +30,13 @@ const PoemButton = glamorous.button({
     borderColor: "#898985",
     border: "none",
     outline: "none",
-    width: "30%",
+    height: "75px",
+    width: "33%",
+    transition: "all 0.2s ease-in-out",
     ':hover,:active,:focus': {
-   background: "linear-gradient(-90deg, rgb(223,223,223), rgb(106,187,177))",
+   background: '#898985',
+   color: 'white'
+
  },
 
 })
@@ -38,8 +45,8 @@ function Footer(props){
     return(
         <FooterContainer>
             <ButtonWrapper>
-                <PoemButton onClick={props.lineToPoem}>Add to Poem</PoemButton>
                 <PoemButton onClick={props.DeleteWord}>Delete Word</PoemButton>
+            <PoemButton onClick={props.lineToPoem}>Add to Poem</PoemButton>
                 <PoemButton onClick={props.DeletePoem}>Delete Poem</PoemButton>
             </ButtonWrapper>
         </FooterContainer>
