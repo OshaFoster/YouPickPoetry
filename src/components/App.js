@@ -12,43 +12,44 @@ const { Div } = glamorous
 
 const WordsDiv = glamorous.div({
     width: "55%",
-    height: "400px",
     backgroundColor: "#fdfdfd",
     margin: "0px auto",
     fontFamily: "'PT Sans Narrow'",
 })
 
 const FinalPoemDiv = glamorous.div({
-    height: "500px",
+    height: "420px",
     display:"flex",
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "#fdfdfd",
     color: "#522053",
-    borderLeft: "1px solid #ebbe46",
     marginTop: "60px",
     paddingTop:"30px",
+    paddingBottom: "80px",
+    overflow: "scroll",
     fontFamily:"'Amatic SC'",
     fontSize: "30px",
 
 })
 const PoemContainer = glamorous.div({
-    margin: "35px auto 40px auto",
+    margin: "20px auto 20px auto",
     width: "85%",
-    height: "40px",
+    minHeight: "85px",
     padding: "0px 15px 0px 15px",
     display: "flex",
     justifyContent: "center",
     color: "#522053",
     fontFamily:"'Amatic SC'",
     fontSize: "26px",
+    transition: "all 1s",
 
 });
 
 
 const RefreshButton = glamorous.button({
     color: "#fdfdfd",
-    background: "#ebbe46", //"#522053"
+    background: "#FFB229", //"#522053"
     fontSize: "18px",
     borderColor: "#898985",
     display: "block",
@@ -57,7 +58,7 @@ const RefreshButton = glamorous.button({
     outline: "none",
     fontFamily: "'PT Sans Narrow'",
     ':hover,:active,:focus': {
-   background: "linear-gradient(-90deg, rgba(193,125,127,1), rgb(235,190,70))",
+   background: "linear-gradient(-90deg, rgba(75,4,76,1), rgb(255,178,41))",
  },
 })
 
@@ -66,17 +67,28 @@ class App extends React.Component {
     state = {
         words: [],
         poemLine: " ",
-        finalPoem: []
+        finalPoem: [],
+        wordCount: window.innerWidth > 750 ? 70 : 25,
 
     }
 
     componentDidMount() {
-        this.randomItems(words)
+        this.randomItems(words, this.state.wordCount)
+        window.addEventListener("resize", this.onResize);
+
     }
 
-    randomItems(words) {
+    onResize = () => {
+        const wordCount = window.innerWidth > 750 ? 70 : 25;
+        this.setState({ wordCount });
+        this.randomItems(words, this.state.wordCount);
+    }
+
+    randomItems(words, wordCount) {
         let newArray = []
-        for (let i = 0; i < 75; i++) {
+        // const wordCount = window.innerWidth > 750 ? 70 : 25;
+        // console.log(wordCount);
+        for (let i = 0; i < wordCount; i++) {
             const word = words[Math.floor(Math.random() * words.length)]
             newArray.push(word)
         }
@@ -132,11 +144,11 @@ class App extends React.Component {
         })
     }
     render() {
-
+        console.log(this.state.words);
         return (
             <div>
                 <Header/>
-                <Div display="flex" justifyContent="space-around" height="auto">
+            <Div display="flex" justifyContent="space-around" height="auto" paddingBottom="10px">
                     <WordsDiv>
                         <PoemContainer>
                             <Poem poemLine={this.state.poemLine}/>
