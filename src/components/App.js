@@ -1,13 +1,30 @@
 import React from "react";
 import Header from "./Header";
-import {words} from "../global"
+import {words, mediaQueries} from "../global"
 import Word from "./Word"
 import Poem from "./Poem"
 import PoemLine from "./PoemLine";
 import Footer from "./Footer";
 import glamorous from "glamorous";
 
-const { Div } = glamorous
+const  DivWrap  = glamorous.div({
+    display: "flex",
+    justifyContent: "space-around",
+    height: "auto",
+    paddingBottom: "10px",
+    [mediaQueries.small]: {
+        flexDirection: "column",
+        justifyContent: "center"
+    }
+
+})
+
+const DivFinalWrap = glamorous.div({
+     width: "40%",
+     [mediaQueries.small]: {
+             width: "95%"
+         }
+})
 
 
 const WordsDiv = glamorous.div({
@@ -15,6 +32,9 @@ const WordsDiv = glamorous.div({
     backgroundColor: "#fdfdfd",
     margin: "0px auto",
     fontFamily: "'PT Sans Narrow'",
+    [mediaQueries.small]: {
+            width: "95%",
+        }
 })
 
 const FinalPoemDiv = glamorous.div({
@@ -23,13 +43,18 @@ const FinalPoemDiv = glamorous.div({
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "#fdfdfd",
-    color: "#522053",
+    color: "#121212",
     marginTop: "60px",
     paddingTop:"30px",
     paddingBottom: "80px",
     overflow: "scroll",
     fontFamily:"'Amatic SC'",
-    fontSize: "30px",
+    fontSize: "28px",
+    [mediaQueries.small]: {
+            height: "65px",
+            fontSize: "22",
+            margin: "0",
+        }
 
 })
 const PoemContainer = glamorous.div({
@@ -39,17 +64,22 @@ const PoemContainer = glamorous.div({
     padding: "0px 15px 0px 15px",
     display: "flex",
     justifyContent: "center",
-    color: "#522053",
+    color: "#121212",
     fontFamily:"'Amatic SC'",
     fontSize: "26px",
     transition: "all 1s",
+    [mediaQueries.small]: {
+        fontSize: "22",
+        padding: "0px 5px 0px 5px",
+        margin: "0",
+        }
 
 });
 
 
 const RefreshButton = glamorous.button({
     color: "#fdfdfd",
-    background: "#FFB229", //"#522053"
+    background: "#FeB229", //"#522053"
     fontSize: "18px",
     borderColor: "#898985",
     display: "block",
@@ -60,6 +90,9 @@ const RefreshButton = glamorous.button({
     ':hover,:active,:focus': {
    background: "linear-gradient(-90deg, rgba(75,4,76,1), rgb(255,178,41))",
  },
+ [mediaQueries.small]: {
+     fontSize: "16",
+     }
 })
 
 
@@ -76,10 +109,12 @@ class App extends React.Component {
         this.randomItems(words, this.state.wordCount)
         window.addEventListener("resize", this.onResize);
 
+
     }
 
     onResize = () => {
         const wordCount = window.innerWidth > 750 ? 70 : 25;
+
         this.setState({ wordCount });
         this.randomItems(words, this.state.wordCount);
     }
@@ -148,27 +183,27 @@ class App extends React.Component {
         return (
             <div>
                 <Header/>
-            <Div display="flex" justifyContent="space-around" height="auto" paddingBottom="10px">
+            <DivWrap>
                     <WordsDiv>
                         <PoemContainer>
                             <Poem poemLine={this.state.poemLine}/>
                         </PoemContainer>
 
                         {this.mapWord()}
-                        <RefreshButton onClick={() => this.randomItems(words)}>Refresh</RefreshButton>
+                        <RefreshButton onClick={() => this.randomItems(words, this.state.wordCount)}>Refresh</RefreshButton>
                     </WordsDiv>
-                    <Div style={{ width: "40%" }}>
+                    <DivFinalWrap>
                     <FinalPoemDiv>
                         {this.mapPoem()}
                     </FinalPoemDiv>
 
-                    </Div>
+                    </DivFinalWrap>
                     <Footer
                         lineToPoem={this.lineToPoem}
                         DeletePoem={this.DeletePoem}
                         DeleteWord={this.DeleteWord}
                         />
-                </Div>
+                </DivWrap>
 
             </div>
 

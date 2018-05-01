@@ -333,3 +333,11 @@ export const words = [
     "ness",
     "es",
 ];
+
+
+
+export const mediaQueries = {
+    small: "@media screen and (max-width: 414px)",
+    medium: "@media screen and (max-width: 768px)",
+    large: "@media screen and (min-width: 1100px)",
+}

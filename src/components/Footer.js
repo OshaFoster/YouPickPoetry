@@ -6,7 +6,7 @@ const FooterContainer = glamorous.div({
     height: "75px",
     width: "100vw",
     position: "fixed",
-    backgroundColor: "#dfdfdf",
+    backgroundColor: "#d8d8d8",
     zIndex: "1",
     bottom: "0px",
 })
@@ -27,7 +27,6 @@ const PoemButton = glamorous.button({
     backgroundColor: "transparent",
     fontFamily: "'PT Sans Narrow'",
     fontSize: "18px",
-    borderColor: "#898985",
     border: "none",
     outline: "none",
     height: "75px",
@@ -35,7 +34,7 @@ const PoemButton = glamorous.button({
     transition: "all 0.2s ease-in-out",
     ':hover,:active,:focus': {
    background: '#898985',
-   color: 'white'
+   color: '#FDFBFC'
 
  },
 

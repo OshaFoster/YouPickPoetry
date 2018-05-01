@@ -1,5 +1,6 @@
 import React from "react";
 import glamorous from "glamorous";
+import { mediaQueries } from "../global";
 
 export default class Word extends React.Component {
     random(min, max) {
@@ -35,12 +36,18 @@ export default class Word extends React.Component {
 
         const Button = glamorous.button({
             color: "#fdfdfd",
-            background: "#676767",
+            background: "#696965",
             borderColor: "#898985",
+            // color: "#fdfdfd",
+            // border: "1px solid #4e4e4e",
+            // background: "#676767",
             fontSize: "14px",
             transform: `rotate(${skew}deg)`,
             margin: `${this.randomMargin()}px ${this.randomMargin()}px ${this.randomMargin()}px ${this.randomMargin()}px`,
             outline: "none",
+            [mediaQueries.small]: {
+                    fontSize: "12",
+                }
         });
         return (
             <Button onClick={this.props.addFoo}>{this.props.word}</Button>
