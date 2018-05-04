@@ -14,7 +14,7 @@ const  DivWrap  = glamorous.div({
     paddingBottom: "10px",
     [mediaQueries.small]: {
         flexDirection: "column",
-        justifyContent: "center"
+        justifyContent: "center",
     }
 
 })
@@ -51,9 +51,11 @@ const FinalPoemDiv = glamorous.div({
     fontFamily:"'Amatic SC'",
     fontSize: "28px",
     [mediaQueries.small]: {
-            height: "65px",
+            height: "auto",
             fontSize: "22",
-            margin: "0",
+            margin: "20px",
+            paddingTop:"0px",
+            // background: "red"
         }
 
 })
@@ -81,7 +83,6 @@ const RefreshButton = glamorous.button({
     color: "#fdfdfd",
     background: "#FeB229", //"#522053"
     fontSize: "18px",
-    borderColor: "#898985",
     display: "block",
     margin: " 20px auto",
     border: "none",
@@ -92,6 +93,8 @@ const RefreshButton = glamorous.button({
  },
  [mediaQueries.small]: {
      fontSize: "16",
+     marginBottom: "0px",
+     background: "#4B044C",
      }
 })
 
@@ -101,7 +104,7 @@ class App extends React.Component {
         words: [],
         poemLine: " ",
         finalPoem: [],
-        wordCount: window.innerWidth > 750 ? 70 : 25,
+        wordCount: window.innerWidth > 750 ? 70 : 35,
 
     }
 
@@ -113,7 +116,7 @@ class App extends React.Component {
     }
 
     onResize = () => {
-        const wordCount = window.innerWidth > 750 ? 70 : 25;
+        const wordCount = window.innerWidth > 750 ? 75 : 25;
 
         this.setState({ wordCount });
         this.randomItems(words, this.state.wordCount);
@@ -136,12 +139,9 @@ class App extends React.Component {
         let updatedPoem = this.state.poemLine;
 
         updatedPoem += ` ${newWord}`;
-        // console.log(updatedPoem);
-        // const poemArray = ['shoe', 'house', 'tickle']
-        // const poemList = poemArray.toString()
         this.setState({poemLine: updatedPoem})
         event.target.style.visibility = 'hidden';
-        // console.log('adding foo')
+
     };
 
     lineToPoem = (event) => {

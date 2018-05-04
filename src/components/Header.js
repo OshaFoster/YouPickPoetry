@@ -14,7 +14,7 @@ function Header() {
          height: "164px",
          display: "flex",
          justifyContent: "center",
-         borderBottom: "3px solid #6bbe94",
+         borderBottom: "2px solid #6bbe94",
          position: "relative",
          // [mediaQueries.small]: {
          //     position: "fixed",
@@ -29,8 +29,8 @@ function Header() {
         fontWeight: "300",
         margin: "45px 20px 0px 0px",
         [mediaQueries.small]: {
-            fontSize: '45px',
-            margin: "50px 10px 0px 0px",
+            fontSize: '42px',
+            margin: "40px 0px 20px 0px",
         }
      });
 
@@ -47,12 +47,12 @@ function Header() {
             width: "140px",
             height: '140px',
             marginTop:"0px",
-            marginLeft: "0px",
-            zIndex:1
+            marginLeft: "10px",
+
         },
     });
 
-        const Icons = glamorous.div({
+        const Icon = glamorous.a({
             color: "#FFB229",
             height: "50px",
             position: "absolute",
@@ -63,8 +63,25 @@ function Header() {
                 bottom: "0%",
                 height: "45px",
             }
+    });
+        const WebAddress = glamorous.a({
+            height: "40px",
+            fontSize: "22px",
+            textDecoration: "none",
+            color: "#4B044C",
+            position: "absolute",
+            right: "7%",
+            bottom: "5%",
+            fontFamily: "'PT Sans Narrow'",
+            [mediaQueries.small]: {
+                left: "2%",
+                top: "2%",
+                fontSize:"18px",
+                color:"#FFB229"
+            }
 
         })
+
 
     return (
 
@@ -77,14 +94,15 @@ function Header() {
                 }}>Poetry</span>
             </HeaderH1>
             <ImageDiv/>
-            <div className="icons">
-
-                <Icons href="https://github.com/OshaFoster" target="_blank" rel="noopener noreferrer">
+            <div>
+                <Icon href="https://github.com/OshaFoster" target="_blank" rel="noopener noreferrer">
                     <span class="fa-stack fa-lg">
                         <i className="icon" class="fa fa-circle fa-stack-2x"></i>
                         <i className="icon" class="fa fa-github fa-stack-1x fa-inverse"></i>
                     </span>
-                </Icons>
+                </Icon>
+                <WebAddress href="https://www.oshafoster.com" target="_blank" rel="noopener noreferrer"><span>oshafoster.com</span>
+                </WebAddress>
 
             </div>
         </HeaderDiv>

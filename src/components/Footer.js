@@ -23,7 +23,6 @@ const ButtonWrapper = glamorous.div({display: "flex",
 
 const PoemButton = glamorous.button({
     color: "#676767",
-    // background: "#6ABBB1",
     backgroundColor: "transparent",
     fontFamily: "'PT Sans Narrow'",
     fontSize: "18px",
