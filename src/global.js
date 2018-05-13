@@ -337,7 +337,7 @@ export const words = [
 
 
 export const mediaQueries = {
-    small: "@media screen and (max-width: 414px)",
-    medium: "@media screen and (max-width: 768px)",
+    small: "@media screen and (max-width: 800px)",
+    medium: "@media screen and (max-width: 800px)",
     large: "@media screen and (min-width: 1100px)",
 }

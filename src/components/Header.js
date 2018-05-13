@@ -4,7 +4,6 @@ import glamorous from "glamorous";
 const spiral = require("../images/spiral.png");
 const smspiral = require("../images/smspiral.png");
 
-// const tree = require("../images/tree.png")
 
 function Header() {
 
@@ -16,6 +15,7 @@ function Header() {
          justifyContent: "center",
          borderBottom: "2px solid #6bbe94",
          position: "relative",
+         transition: "all 0.4s ease-in-out",
          // [mediaQueries.small]: {
          //     position: "fixed",
          //     zIndex: 10,
@@ -28,6 +28,7 @@ function Header() {
         fontFamily: "'Amatic SC'",
         fontWeight: "300",
         margin: "45px 20px 0px 0px",
+         transition: "all 1s",
         [mediaQueries.small]: {
             fontSize: '42px',
             margin: "40px 0px 20px 0px",
@@ -42,13 +43,13 @@ function Header() {
         backgroundSize: "cover",
         display: "flex",
         zIndex: "10",
+        transition: "all 1s",
         [mediaQueries.small]: {
             background: `url(${smspiral}) no-repeat`,
             width: "140px",
             height: '140px',
             marginTop:"0px",
-            marginLeft: "10px",
-
+            marginLeft: "20px",
         },
     });
 
@@ -58,6 +59,7 @@ function Header() {
             position: "absolute",
             right: "2%",
             bottom: "5%",
+            transition: "all 1s",
             [mediaQueries.small]: {
                 right: "0%",
                 bottom: "0%",
@@ -73,6 +75,7 @@ function Header() {
             right: "7%",
             bottom: "5%",
             fontFamily: "'PT Sans Narrow'",
+             transition: "all 1s",
             [mediaQueries.small]: {
                 left: "2%",
                 top: "2%",
@@ -96,9 +99,9 @@ function Header() {
             <ImageDiv/>
             <div>
                 <Icon href="https://github.com/OshaFoster" target="_blank" rel="noopener noreferrer">
-                    <span class="fa-stack fa-lg">
-                        <i className="icon" class="fa fa-circle fa-stack-2x"></i>
-                        <i className="icon" class="fa fa-github fa-stack-1x fa-inverse"></i>
+                    <span className="fa-stack fa-lg">
+                        <i className="fa fa-circle fa-stack-2x"></i>
+                        <i  className="fa fa-github fa-stack-1x fa-inverse"></i>
                     </span>
                 </Icon>
                 <WebAddress href="https://www.oshafoster.com" target="_blank" rel="noopener noreferrer"><span>oshafoster.com</span>

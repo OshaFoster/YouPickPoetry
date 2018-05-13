@@ -12,6 +12,7 @@ const  DivWrap  = glamorous.div({
     justifyContent: "space-around",
     height: "auto",
     paddingBottom: "10px",
+    transition: "all 0.4s ease-in-out",
     [mediaQueries.small]: {
         flexDirection: "column",
         justifyContent: "center",
@@ -104,28 +105,29 @@ class App extends React.Component {
         words: [],
         poemLine: " ",
         finalPoem: [],
-        wordCount: window.innerWidth > 750 ? 70 : 35,
 
     }
 
     componentDidMount() {
-        this.randomItems(words, this.state.wordCount)
+        this.randomItems(words, 70)
         window.addEventListener("resize", this.onResize);
 
 
     }
 
     onResize = () => {
-        const wordCount = window.innerWidth > 750 ? 75 : 25;
+        const wordCount = window.innerWidth > 960 ? 70 : 35;
+        // console.log(`onResize: ${wordCount}`);
+        if (wordCount !== this.state.wordCount){
+            this.setState({ wordCount });
 
-        this.setState({ wordCount });
-        this.randomItems(words, this.state.wordCount);
+        }
     }
 
     randomItems(words, wordCount) {
         let newArray = []
         // const wordCount = window.innerWidth > 750 ? 70 : 25;
-        // console.log(wordCount);
+        console.log(wordCount);
         for (let i = 0; i < wordCount; i++) {
             const word = words[Math.floor(Math.random() * words.length)]
             newArray.push(word)
@@ -162,7 +164,7 @@ class App extends React.Component {
         var poemLine = this.state.poemLine;
         var lastIndex = poemLine.lastIndexOf(' ')
         poemLine = poemLine.substring(0, lastIndex)
-        console.log(poemLine)
+        // console.log(poemLine)
         this.setState({poemLine});
 
     };
@@ -174,12 +176,37 @@ class App extends React.Component {
     }
 
     mapWord() {
-        return this.state.words.map((word, i) => {
-            return (<Word word={word} key={word + i} addFoo={this.addFoo} poemLine={this.state.poemLine}/>)
-        })
+      const wordCount = window.innerWidth > 960 ? 70 : 35;
+
+      const wordElements = [];
+      for (let i = 0; i < wordCount; i++) {
+        wordElements.push(<Word word={this.state.words[i]} key={i} addFoo={this.addFoo} poemLine={this.state.poemLine}/>)
+      }
+       console.log(this.state.words)
+      return wordElements;
+
     }
+
+    // mapWord() {
+    //
+    //     const maxLength = this.state.wordCount;
+    //     console.log(maxLength)
+    //     const words = this.state.words.slice(0, maxLength + 1);
+    //     console.log(words.length)
+    //     return words.map((word, i) => {
+    //         return (<Word word={word} key={word + i} addFoo={this.addFoo} poemLine={this.state.poemLine}/>)
+    //     })
+    // }
+
+   //  ***
+   //  mapWord() {
+   //     return this.state.words.map((word, i) => {
+   // console.log(word)
+   //         return (<Word word={word} key={word + i} addFoo={this.addFoo} poemLine={this.state.poemLine}/>)
+   //     })
+   // }
     render() {
-        console.log(this.state.words);
+        // console.log(this.state.words);
         return (
             <div>
                 <Header/>
