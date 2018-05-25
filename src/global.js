@@ -18,7 +18,6 @@ export const words = [
     "leasure",
     "pie",
     "happiness",
-    "sharp",
     "wild",
     "list",
     "young",

@@ -8,8 +8,8 @@ export default class Word extends React.Component {
     }
 
     randomSkew(){
-        if (this.random(1, 5) % 2 === 0) {
-            return this.random(-12, 12);
+        if (this.random(1, 5)) {
+            return this.random(-10, 12);
         }
         return 0;
         //pick a random number between -10 and 10, return that number

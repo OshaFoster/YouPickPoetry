@@ -9,7 +9,7 @@ function Header() {
 
 
     const HeaderDiv = glamorous.div({
-         background: "linear-gradient(-90deg, rgb(193,125,127,1), rgba(75,4,76,1))",
+         background: "linear-gradient(-90deg, rgba(193,125,127,1), rgba(75,4,76,1))",
          height: "164px",
          display: "flex",
          justifyContent: "center",

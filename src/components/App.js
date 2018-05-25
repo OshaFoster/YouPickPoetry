@@ -89,7 +89,7 @@ const RefreshButton = glamorous.button({
     border: "none",
     outline: "none",
     fontFamily: "'PT Sans Narrow'",
-    ':hover,:active,:focus': {
+    ':hover': {
    background: "linear-gradient(-90deg, rgba(75,4,76,1), rgb(255,178,41))",
  },
  [mediaQueries.small]: {
@@ -105,6 +105,7 @@ class App extends React.Component {
         words: [],
         poemLine: " ",
         finalPoem: [],
+        wordCount: []
 
     }
 
@@ -126,8 +127,8 @@ class App extends React.Component {
 
     randomItems(words, wordCount) {
         let newArray = []
-        // const wordCount = window.innerWidth > 750 ? 70 : 25;
-        console.log(wordCount);
+
+
         for (let i = 0; i < wordCount; i++) {
             const word = words[Math.floor(Math.random() * words.length)]
             newArray.push(word)
@@ -175,28 +176,27 @@ class App extends React.Component {
         this.setState({finalPoem})
     }
 
-    mapWord() {
-      const wordCount = window.innerWidth > 960 ? 70 : 35;
-
-      const wordElements = [];
-      for (let i = 0; i < wordCount; i++) {
-        wordElements.push(<Word word={this.state.words[i]} key={i} addFoo={this.addFoo} poemLine={this.state.poemLine}/>)
-      }
-       console.log(this.state.words)
-      return wordElements;
-
-    }
-
     // mapWord() {
+    //   const wordCount = window.innerWidth > 960 ? 70 : 35;
     //
-    //     const maxLength = this.state.wordCount;
-    //     console.log(maxLength)
-    //     const words = this.state.words.slice(0, maxLength + 1);
-    //     console.log(words.length)
-    //     return words.map((word, i) => {
-    //         return (<Word word={word} key={word + i} addFoo={this.addFoo} poemLine={this.state.poemLine}/>)
-    //     })
+    //   const wordElements = [];
+    //   for (let i = 0; i < wordCount; i++) {
+    //     wordElements.push(<Word word={this.state.words[i]} key={i} addFoo={this.addFoo} poemLine={this.state.poemLine}/>)
+    //   }
+    //
+    //   return wordElements;
+    //
     // }
+
+    mapWord() {
+        const wordCount = window.innerWidth > 960 ? 70 : 35;
+
+        const words = this.state.words.slice(0, wordCount + 1);
+        // console.log(words.length)
+        return words.map((word, i) => {
+            return (<Word word={word} key={word + i} addFoo={this.addFoo} poemLine={this.state.poemLine}/>)
+        })
+    }
 
    //  ***
    //  mapWord() {
@@ -217,7 +217,7 @@ class App extends React.Component {
                         </PoemContainer>
 
                         {this.mapWord()}
-                        <RefreshButton onClick={() => this.randomItems(words, this.state.wordCount)}>Refresh</RefreshButton>
+                        <RefreshButton onClick={() => this.randomItems(words, 70)}>Refresh</RefreshButton>
                     </WordsDiv>
                     <DivFinalWrap>
                     <FinalPoemDiv>

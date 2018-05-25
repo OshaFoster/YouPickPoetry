@@ -31,7 +31,7 @@ const PoemButton = glamorous.button({
     height: "75px",
     width: "33%",
     transition: "all 0.3s ease-in-out",
-    ':hover,:active,:focus': {
+    ':hover': {
    background: '#898985',
    color: '#FDFBFC'
 
